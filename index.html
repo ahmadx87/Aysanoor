@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>LED controller</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="jquery-mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="styles/chromoselector.css">
+    <link href="styles/jquery-alert.css" rel="stylesheet" type="text/css">
+    <link href="styles/custom.css" rel="stylesheet" type="text/css">
+    <script src="cordova.js"></script>
+    <script src="jquery-mobile/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="jquery-mobile/jquery-ui.min.js"></script>
+    <script src="jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="jquery-mobile/jquery-alert.js"></script>
+    <script src="jquery-mobile/selectableScroll.js"></script>
+    <script src="jquery-mobile/chromoselector.min.js" type="text/javascript"></script>
+    <script src="jquery-mobile/MyScript.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <div id="page" data-role="page" data-theme="b">
+
+        <div data-role="header" data-theme="b">
+            <img class="logoHeader" src="styles/logo.png" alt="logo">
+            <div class="logo">آیسانور
+
+                <a href="#settingsPage"><img class="settingsMenu" src="styles/settingsicon.png" alt="settings icon"></a>
+
+
+
+            </div>
+        </div>
+        <div data-role="main" class="ui-content">
+
+            <div class="silderDiv">
+                <p class="SliderTitle">درصد روشنایی: <span class="sliderVal brightnessVal"></span></p>
+                <label for="brightnessSlider" class="ui-hidden-accessible">Slider:</label>
+                <input id="brightnessSlider" type="range" name="brightnessSlider" min="0" max="100" />
+            </div>
+            <div class="spacer"></div>
+            <table class="listSelection">
+                <tr>
+                    <td class="firstCol">
+                        <P>برنامه</p>
+                    </td>
+                    <td class="secondCol">
+                        <form>
+                            <select name="select-native-1" id="modeOptions" data-enhance="false" data-role="none">
+                     <!--This list is populated with jquery-->
+                     </select>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <div class="spacer"></div>
+            <div class="singleAnimationPortion">
+                <table class="listSelection">
+                    <tr>
+                        <td class="firstCol">
+                            <P>انیمیشن</p>
+                        </td>
+                        <td class="secondCol">
+                            <form>
+
+                                <select name="select-native-1" id="animationDropDown">
+                     </select>
+
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                <div class="spacer"></div>
+            </div>
+
+            <div class="silderDiv multiAnimationPortion singleAnimationPortion" id="gHueChangeTimeIntervalDiv">
+                <p class="SliderTitle">سرعت تغییر رنگ: <span class="gHueTimeVal"></span> </p>
+
+                <form class="full-width-slider">
+                    <label for="gHueChangeTimeIntervalSlider" class="ui-hidden-accessible">Slider:</label>
+                    <input id="gHueChangeTimeIntervalSlider" type="range" name="gHueChangeTimeIntervalSlider" min="1" max="100">
+                </form>
+
+                <div class="spacer"></div>
+            </div>
+
+
+            <div class="silderDiv multiAnimationPortion" id="AnimationDurationDiv">
+                <p class="SliderTitle">مدت اجرای هر انیمیشن: <span class="sliderVal AnimationDurationVal"></span> ثانیه </p>
+
+                <form class="full-width-slider">
+                    <label for="AnimationDurationSlider" class="ui-hidden-accessible">Slider:</label>
+                    <input id="AnimationDurationSlider" type="range" name="AnimationDurationSlider" min="2" max="60">
+                </form>
+
+                <div class="spacer"></div>
+            </div>
+            <div id="FPSsliderDiv" class="silderDiv singleAnimationPortion multiAnimationPortion">
+                <p class="SliderTitle">سرعت انیمیشن: <span class="sliderVal FPSVal"></span> فریم در ثانیه</p>
+
+                <form class="full-width-slider">
+                    <label for="FPSSlider" class="ui-hidden-accessible">Slider:</label>
+                    <input id="FPSSlider" type="range" name="FPSSlider" min="3" max="200">
+                </form>
+
+                <div class="spacer"></div>
+            </div>
+
+
+            <div id="colorPickerDiv" class="singleColorPortion">
+                <div id="chromoselectorDiv">
+
+                    <label for="chromoselectorInput"></label> <input id="chromoselectorInput" type="text" value="#7bda1b" data-role="none" />
+                </div>
+                <table class="RGBsliderColorSelection">
+                    <tr>
+                        <td class="firstColRGBslider">
+                            <P>R</p>
+                        </td>
+                        <td class="secondColRGBslider">
+                            <form class="full-width-slider">
+                                <label for="colorRSlider" class="ui-hidden-accessible">Slider:</label>
+                                <input id="colorRSlider" type="range" name="colorRSlider" data-highlight="true" min="0" max="255">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstColRGBslider">
+                            <P>G</p>
+                        </td>
+                        <td class="secondColRGBslider">
+                            <form class="full-width-slider">
+                                <label for="colorGSlider" class="ui-hidden-accessible">Slider:</label>
+                                <input id="colorGSlider" type="range" name="colorGSlider" data-highlight="true" min="0" max="255">
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstColRGBslider">
+                            <P>B</p>
+                        </td>
+                        <td class="secondColRGBslider">
+                            <form class="full-width-slider">
+                                <label for="colorBSlider" class="ui-hidden-accessible">Slider:</label>
+                                <input id="colorBSlider" type="range" name="colorBSlider" data-highlight="true" min="0" max="255">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <div class="multiAnimationPortion makeListButtonContainerDiv">
+                <a href="#pagetwo" id="makeListButton">ساخت لیست</a>
+
+            </div>
+
+            <div class="runButtonContainerDiv">
+
+                <button id="runButton" class="ui-btn ui-shadow">اجرا</button>
+
+            </div>
+
+            <p id="outstr"></p>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <div data-role="page" id="pagetwo" data-theme="b">
+        <div id="headerPageTwo" data-role="header" data-theme="b">
+            <div class="logo">آیسانور
+
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+
+            <div id="listCreationSelectAndButtonContainer">
+
+
+                <div id="listCreationSelectBoxContainer">
+                    <form>
+                        <select name="select-native-1" id="animationDropDownPage2" style="border-color:red;">
+                     <!--This list is populated with jquery-->
+                     </select>
+                    </form>
+                </div>
+                <div class="clearfix">
+                    <img src="styles/ok_button.png" id="okButton" class="imgButton" alt="button">
+                    <img src="styles/cancel_button.png" id="cancelButton" class="imgButton" alt="button">
+                    <img src="styles/up_button.png" id="upButton" class="imgButton" alt="button">
+                    <img src="styles/down_button.png" id="downButton" class="imgButton" alt="button">
+                    <img src="styles/remove_button.png" id="removeButton" class="imgButton" alt="button">
+                    <img src="styles/add_button.png" id="addButton" class="imgButton" alt="button">
+                </div>
+
+            </div>
+
+
+
+            <div id="listContainer">
+                <ol id="sortable">
+
+                </ol>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div data-role="page" id="settingsPage" data-theme="b">
+        <div id="headerSettingsPage" data-role="header" data-theme="b">
+            <div class="logo">آیسانور
+
+            </div>
+        </div>
+
+        <div data-role="main" class="ui-content">
+
+
+            <table class="listSelection">
+                <tr>
+                    <td class="firstCol">
+                        <label for="noOfLeds">تعداد LED </label>
+                    </td>
+                    <td class="secondCol">
+                        <input type="number" style="direction:ltr;" name="noOfLeds" id="numberOfLEDSinput" min="1" max="1000">
+                    </td>
+                </tr>
+                <!-- <tr>
+            <td class="firstCol">
+               <label for="noOfLeds">ترتیب رنگ </label>
+            </td>
+            <td class="secondCol">
+			<select name="ColorSequence" id="ColorSequenceInput" >
+			  <option value="0">RGB</option>
+			  <option value="1">RBG</option>
+			  <option value="2">GRB</option>
+			  <option value="3">GBR</option>
+			  <option value="4">BRG</option>
+			  <option value="5">BGR</option>
+			  </select>         
+            </td>
+         </tr> -->
+            </table>
+            <div style="direction:rtl; margin:auto; width:90%;" data-iconpos="right" data-role="collapsible">
+
+                <h1 style="direction:rtl; margin:auto; width=50% text-align:right !important;">تغییر نام و کلمه عبور WiFi</h1>
+                <table class="listSelection">
+                    <tr>
+                        <td class="firstColSettingsPage">
+                            <p> رمز WiFi فعلی</p>
+                        </td>
+                        <td class="secondColSettingsPage">
+                            <input type="text" id="passwordWifiOld">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="firstColSettingsPage">
+                            <p> نام WiFi </p>
+                        </td>
+                        <td class="secondColSettingsPage">
+                            <input type="text" id="usernameWifi">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="firstColSettingsPage">
+                            <p> رمز جدید WiFi </p>
+                        </td>
+                        <td class="secondColSettingsPage">
+                            <input type="text" id="passwordWifiNew">
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div style="text-align:center; width:70%; padding-top:1em; margin:auto;">
+                <img src="styles/ok_button.png" id="okButtonSettingsPage" class="imgButton" alt="button" style="float:right;">
+
+                <img src="styles/cancel_button.png" id="cancelButtonSettingsPage" class="imgButton" alt="button" style="float:left;">
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

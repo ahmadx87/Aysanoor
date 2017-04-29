@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.uialert {
+	direction: rtl;
+    width:80%;
+    background: #2f2f2f;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100000;
+    visibility: hidden;
+    text-align: center;
+    z-index: 100000;
+	font-size:1.1em;
+    box-shadow: 10px 10px 10px #202020;
+	border-radius: 20px;
+	border-color: black;
+	border-style: solid; 
+    border-width: 2px 2px 2px 2px;  
+
+}
+.uialert.show{
+    visibility: visible;
+}
+.uialert .uialert_inner{
+    padding:1em 1em 1em 1em;
+}
+
+.uialert .uialert_content {
+}
+
+.uialert .uialert_inner .uialert_button_container{
+    margin-top:1em;
+}
+.uialert button.action {
+    color: #74716D;
+    text-decoration: none;
+    outline: none;
+    margin:.1em 1em;
+}
+
+.uialert button.action {
+    padding: .6em 1.5em;
+    border-radius:.4em;
+    outline: none;
+    font-weight: 600;
+    border: none;
+    color: #fff;
+    background: #c94e50;
+    font-size: 16px;
+	font-family:"koodak";
+	width: 30%;
+}
+
+.uialert_mask{
+    background:#333333;
+    width:100%;
+    height:100%;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 99999;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease;
+}
+.uialert_mask.show{
+    visibility: visible;
+    opacity: 0.7;
+}
+
+
+.uialert.dialog-open,
+.uialert.dialog-close {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.uialert.dialog-open {
+    -webkit-animation-name: anim-open;
+    animation-name: anim-open;
+    -webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+    animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+}
+
+.uialert.dialog-close{
+    -webkit-animation-name: anim-close;
+    animation-name: anim-close;
+}
+
+@-webkit-keyframes anim-open {
+    0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); }
+    100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); }
+}
+
+@keyframes anim-open {
+    0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); transform: scale3d(0, 0, 1); }
+    100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+
+@-webkit-keyframes anim-close {
+    0% { opacity: 1; }
+    100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); }
+}
+
+@keyframes anim-close {
+    0% { opacity: 1; }
+    100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); transform: scale3d(0.5, 0.5, 1); }
+}
