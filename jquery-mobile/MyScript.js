@@ -726,7 +726,7 @@ $(document).ready(function() {
 
 
 });
-
+/*
 $(window).load(function() {
 
     $("#listContainer").height($(window).height());
@@ -735,7 +735,7 @@ $(window).load(function() {
 		$("#sortable").height($("#listContainer").height());
     }, 3000);
 });
-
+*/
 
 function sendConfig(configString) {
 
