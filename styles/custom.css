@@ -393,7 +393,6 @@ float:=middle;
 	left: 1em;
 	right:1em;
 	bottom: 0em;
-	height:50%;
 	overflow-y:auto;
     overflow-x:hidden;
 }
